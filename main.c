@@ -4,27 +4,14 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int main() {
-    char word1[100], word2[100], word3[100];
-
-    printf("Input a word:");
-    scanf("%s", word1);
-    printf("Input a word:");
-    scanf("%s", word2);
-    printf("Input a word:");
-    scanf("%s", word3);
-    
-    FILE *filePointer;
-    filePointer = fopen("sample.txt", "w");
-
-    if (filePointer == NULL) {
-        printf("Error opening the file.\n");
-        return 1;
-    }
-
-    fprintf(filePointer, "%s %s %s", word1, word2, word3);
-    fclose(filePointer);
-
-    return 0;
+void main(void){
+	FILE *fp = NULL;
+	char c;
+	fp = fopen("sample.txt", "r");
+    if (fp == NULL)
+      printf("failed to open\n");
+      
+    while ((c=fgetc(fp)) != EOF)
+      putchar(c);
+    fclose(fp);
 }
-
